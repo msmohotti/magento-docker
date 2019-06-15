@@ -1,0 +1,17 @@
+version: '2'
+services:
+   magento2:
+    image: msmohotti/magento2-lemp-rabbitmq:1.0
+    volumes:
+      - ./logs:/var/log/nginx
+      - ./code:/var/www/html
+      - ./data:/var/lib/mysql
+      - ./sites-enabled:/etc/nginx/sites-available
+    environment:
+      - DB_NAME=magento
+      - DB_USER=magento
+      - DB_PASS=password
+    ports:
+      - 80:80
+      - 3306:3306
+      - 15672:15672
